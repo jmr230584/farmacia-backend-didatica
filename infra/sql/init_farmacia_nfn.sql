@@ -103,3 +103,54 @@ INSERT INTO produto (descricao, validade, preco, qtd_estoque, qtd_min_estoque) V
 ('Ibuprofeno 400mg',   CURRENT_DATE + INTERVAL '150 days', 12.00,  6, 3),
 ('Soro Fisiológico 0,9%', CURRENT_DATE + INTERVAL '365 days', 5.00, 2, 5);  -- já entra em alerta
 
+INSERT INTO venda (id_cliente) VALUES (1);
+-- Itens da Venda 1 (id_venda = 1)
+INSERT INTO item_venda (id_venda, id_produto, qtd_produto, preco_unit) VALUES
+(1, 1, 3, 9.90),   -- Paracetamol 3x
+(1, 2, 2, 7.50),   -- Dipirona 2x
+(1, 4, 1, 5.00);   -- Soro 1x
+
+-- Venda 2 (cliente Bruno Paz)
+INSERT INTO venda (id_cliente) VALUES (2);
+-- Itens da Venda 2 (id_venda = 2)
+INSERT INTO item_venda (id_venda, id_produto, qtd_produto, preco_unit) VALUES
+(2, 3, 2, 12.00),  -- Ibuprofeno 2x
+(2, 1, 1, 9.90);   -- Paracetamol 1x
+
+-- Venda 3 (cliente Ana Lima novamente)
+INSERT INTO venda (id_cliente) VALUES (1);
+-- Itens da Venda 3 (id_venda = 3)
+INSERT INTO item_venda (id_venda, id_produto, qtd_produto, preco_unit) VALUES
+(3, 2, 4, 7.50),   -- Dipirona 4x
+(3, 4, 1, 5.00);   -- Soro 1x
+
+-- Verificar todas as vendas
+SELECT * FROM venda ORDER BY id_venda;
+
+-- Verificar itens detalhados
+SELECT iv.id_venda, p.descricao, iv.qtd_produto, iv.preco_unit
+FROM item_venda iv
+JOIN produto p ON p.id_produto = iv.id_produto
+ORDER BY iv.id_venda, p.id_produto;
+
+-- Conferir estoque atualizado após as vendas
+SELECT id_produto, descricao, qtd_estoque, qtd_min_estoque
+FROM produto
+ORDER BY id_produto;
+
+-- Produtos com estoque crítico
+SELECT * FROM v_produtos_alerta;
+
+-- Adicionado itens a tabela produto
+-- UPDATE produto p
+-- SET qtd_estoque = p.qtd_estoque + v.delta
+-- FROM (VALUES
+--   (1, 4),   -- id_produto=1  +4 un
+--   (2, 6),   -- id_produto=2  +6 un
+--   (3, 2),   -- id_produto=3  +2 un
+--   (4, 5)    -- id_produto=4  +5 un
+-- ) AS v(id_produto, delta)
+-- WHERE p.id_produto = v.id_produto
+-- RETURNING p.id_produto, p.descricao, p.qtd_estoque;
+
+SELECT * FROM venda;
