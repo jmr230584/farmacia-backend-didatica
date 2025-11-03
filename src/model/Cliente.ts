@@ -3,13 +3,13 @@ import { DatabaseModel } from "./DatabaseModel.js";
 const database = new DatabaseModel().pool;
 
 export class Cliente {
-  private idCliente?: number;
-  private cpf: string;
+  private idCliente?: number;  
   private nome: string;
+  private cpf: string;
 
-  constructor(_cpf: string, _nome: string) {
-    this.cpf = _cpf;
+  constructor( _nome: string, _cpf: string) {    
     this.nome = _nome;
+    this.cpf = _cpf;
   }
 
   // ========== GETTERS ==========
@@ -38,7 +38,9 @@ export class Cliente {
         );
 
         novoCliente.setIdCliente(clienteBD.id_cliente);
+        console.log(novoCliente);
         listaDeClientes.push(novoCliente);
+
       });
 
       return listaDeClientes;
@@ -52,10 +54,10 @@ export class Cliente {
   // CREATE
   static async cadastrarCliente(cliente: Cliente): Promise<boolean> {
     try {
-      const queryInsertCliente = `INSERT INTO Cliente (cpf, nome)
-        VALUES ( $1, $2, $3)      
+      const queryInsertCliente = `INSERT INTO Cliente (nome, cpf)
+        VALUES ( $1, $2)      
         RETURNING id_cliente;`;
-
+        
       const result = await database.query(queryInsertCliente, [
         cliente.nome.toUpperCase(),
         cliente.cpf
@@ -69,7 +71,7 @@ export class Cliente {
       return false;
 
     } catch (error) {
-      console.error(`Erro ao cadastrar aluno: ${error}`);
+      console.error(`Erro ao cadastrar cliente: ${error}`);
       return false
     }
   }

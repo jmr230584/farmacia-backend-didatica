@@ -1,21 +1,15 @@
-
 import { Cliente } from "../model/Cliente.js";
 import type { Request, Response } from "express";
 
-/**
- * Classe responsável por receber a requisição do cliente, processar essa requisição e devolver a resposta ao cliente
- * 
- * Trata apenas de requisições relacionadas ao recurso Cliente
- */
 class ClienteController extends Cliente {
 
     static async todos(req: Request, res: Response): Promise<Response> {
-        try {            
-            const listaClientes: Array<Cliente> | null = await Cliente.listarClientes();           
+        try {
+            const listaClientes: Array<Cliente> | null = await Cliente.listarClientes();
             return res.status(200).json(listaClientes);
 
-        } catch (error) {           
-            console.error(`Erro ao consultar modelo. ${error}`);            
+        } catch (error) {
+            console.error(`Erro ao consultar modelo. ${error}`);
             return res.status(500).json({ mensagem: "Não foi possivel acessar a lista de clientes." });
 
         }
@@ -23,7 +17,7 @@ class ClienteController extends Cliente {
 
     static async novo(req: Request, res: Response): Promise<Response> {
         try {
-            const dadosRecebidosCliente = req.body;           
+            const dadosRecebidosCliente = req.body;
             const respostaModelo = await Cliente.cadastrarCliente(dadosRecebidosCliente);
 
             if (respostaModelo) {

@@ -95,12 +95,23 @@ WHERE p.qtd_estoque <= p.qtd_min_estoque;
 
 INSERT INTO cliente (nome, cpf) VALUES
 ('Ana Lima',  '123.456.789-01'),
+('Felisberto felis', '546.567.123-98'),
 ('Bruno Paz', '987.654.321-00');
 
 INSERT INTO produto (descricao, validade, preco, qtd_estoque, qtd_min_estoque) VALUES
-('Paracetamol 750mg',  CURRENT_DATE + INTERVAL '180 days', 9.90,  20, 5),
-('Dipirona 1g',        CURRENT_DATE + INTERVAL '200 days', 7.50,  10, 4),
-('Ibuprofeno 400mg',   CURRENT_DATE + INTERVAL '150 days', 12.00,  6, 3),
+('Paracetamol 750mg', CURRENT_DATE + INTERVAL '180 days', 9.90,  20, 5),
+('Dipirona 1g', CURRENT_DATE + INTERVAL '200 days', 7.50,  10, 4),
+('Ibuprofeno 400mg', CURRENT_DATE + INTERVAL '150 days', 12.00,  6, 3),
+('Amoxicilina 500mg', CURRENT_DATE + INTERVAL '300 days', 22.50, 12, 5),
+('Cetirizina 10mg', CURRENT_DATE + INTERVAL '250 days', 14.90, 8, 4),
+('Omeprazol 20mg', CURRENT_DATE + INTERVAL '400 days', 18.00, 15, 6),
+('Loratadina 10mg', CURRENT_DATE + INTERVAL '210 days', 13.50, 3, 5),  -- alerta de estoque
+('Ácido Acetilsalicílico 100mg', CURRENT_DATE + INTERVAL '180 days', 11.00, 9, 5),
+('Metformina 850mg', CURRENT_DATE + INTERVAL '320 days', 19.80, 20, 8),
+('Losartana 50mg', CURRENT_DATE + INTERVAL '270 days', 17.90, 4, 6),  -- alerta de estoque
+('Prednisona 5mg', CURRENT_DATE + INTERVAL '150 days', 10.50, 7, 3),
+('Clonazepam 2,5mg', CURRENT_DATE + INTERVAL '90 days',  27.00, 2, 5),  -- alerta de estoque
+('Vitamina C 1g', CURRENT_DATE + INTERVAL '500 days', 8.90, 18, 6),
 ('Soro Fisiológico 0,9%', CURRENT_DATE + INTERVAL '365 days', 5.00, 2, 5);  -- já entra em alerta
 
 INSERT INTO venda (id_cliente) VALUES (1);

@@ -5,8 +5,6 @@ dotenv.config();
 
 
 export class DatabaseModel {
-
-
     private _config: object;
 
     private _pool: pg.Pool;
