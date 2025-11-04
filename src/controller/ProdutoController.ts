@@ -54,7 +54,6 @@ class ProdutoController extends Produto {
             if (isNaN(idProduto)) {
                 return res.status(400).json({ erro: 'ID do produto inválido' });
             }
-
             const campos = req.body;
             const atualizado = await Produto.atualizarProduto(idProduto, campos);
             console.log(idProduto, campos);
