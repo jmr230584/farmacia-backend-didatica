@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "ce71fbe7-e584-467e-862a-c789b3814f4f",
+		"name": "Farmácia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27273396"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Cadastrar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Jubileu Juba\",\r\n    \"cpf\": \"321.654.789-99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Lista Produtos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Produtos Alertas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/produtos/alerta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"produtos",
+								"alerta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Antisséptico Tópico Merthiolate Spray 30ml\",\r\n    \"validade\": \"2027-10-10\",\r\n    \"preco\": \"26.50\",\r\n    \"qtdEstoque\": 25,\r\n    \"qtdMinEstoque\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Ibuprofeno 400mg\",\r\n    \"validade\": \"2026-04-02\",\r\n    \"preco\": \"12.00\",\r\n    \"qtdEstoque\": 10,\r\n    \"qtdMinEstoque\": 3\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/produtos/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"produtos",
+								"3"
+							],
+							"query": [
+								{
+									"key": "idProduto",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Listar todos pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar itens de um pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/pedidos/2/itens",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pedidos",
+								"2",
+								"itens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adiciona um novo item em um pedido existente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"idProduto\": 1,\r\n    \"qtdProduto\": 2,\r\n    \"precoUnit\": \"22.50\"      \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/pedidos/2/itens",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pedidos",
+								"2",
+								"itens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalhes pedido especifico",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"idProduto\": 4,    \r\n    \"qtdProduto\": 2,\r\n    \"precoUnit\": 22.50      \r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/pedidos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pedidos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Novo Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idCliente\": 2,\r\n  \"itens\": [\r\n    { \"idProduto\": 1, \"qtdProduto\": 1, \"precoUnit\": 9.90 },\r\n    { \"idProduto\": 3, \"qtdProduto\": 2, \"precoUnit\": 12.00 }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Itens do pedido",
+			"item": [
+				{
+					"name": "Todos itens Venda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/itens/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"itens",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Novo item em uma Venda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idVenda\": 2,\r\n    \"idProduto\": 5,\r\n    \"qtdProduto\": 3,\r\n    \"precoUnit\": 9.90\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/itens",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"itens"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
