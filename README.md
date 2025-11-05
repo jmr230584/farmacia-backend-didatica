@@ -38,8 +38,8 @@ Sua responsabilidade:
   - Uma forma para o usuário cadastrar um produto novo
   - Uma forma para o usuário atualizar um produto
   - Uma forma para o usuário efetuar a exclusão de um produto
-  - Desenvolver uma forma que possa dar entrada ou saída de produtos do estoque, essa
-    movimentação deve ter a opção de inserir a data
+  - Desenvolver uma forma que possa dar entrada ou saída de produtos do estoque, e 
+    registrar essa transação, essa movimentação deve ter a opção de inserir a data (recomendação que seja em uma interface diferente, para manter os registros de entrada e saída de produtos)
   - Uma forma de verificação automática do estoque de remédio, gerando um alerta em caso de
     estoque abaixo do mínimo configurado
   - Uma forma de retornar a Interface principal
