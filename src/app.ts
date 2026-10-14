@@ -23,4 +23,4 @@ new DatabaseModel().testeConexao().then((ok) => {
     } else {
         console.log('Não foi possível conectar ao banco de dados');
     }
-});
+})
